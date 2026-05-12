@@ -1,0 +1,133 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#kontak{
+    background-color: #11667B;
+    transition: 0.3s;
+}
+#kontak:hover{
+    background-color: #24c4ec;
+}
+
+.btn-kurikulum-hover {
+    transition: all 0.3s ease-in-out !important;
+}
+
+.btn-kurikulum-hover:hover {
+    transform: translateY(-3px); /* Tombol terangkat 3px */
+    box-shadow: 0 10px 20px rgba(245, 159, 31, 0.4) !important; /* Glow shadow warna oranye */
+    background-color: #e69015 !important; /* Warna oranye sedikit lebih gelap */
+}
+
+.btn-kurikulum-hover i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-kurikulum-hover:hover i {
+    transform: translateX(6px); 
+}
+
+#profilImage{
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (min-width: 576px) {
+  #mitra {
+    width: 160px;
+  }
+}
+
+.dropdown-menu.show {
+    animation: slideFadeDown 0.3s ease-out forwards;
+}
+
+@keyframes slideFadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 992px) {
+    .dropend .dropdown-menu.show {
+        animation: slideFadeRight 0.3s ease-out forwards;
+    }
+
+    @keyframes slideFadeRight {
+        0% {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+.navbar-toggler[aria-expanded="false"] .icon-close {
+    display: none;
+}
+.navbar-toggler[aria-expanded="false"] .icon-menu {
+    display: inline-block;
+}
+
+.navbar-toggler[aria-expanded="true"] .icon-close {
+    display: inline-block;
+}
+.navbar-toggler[aria-expanded="true"] .icon-menu {
+    display: none;
+}
+
+.navbar-toggler {
+    border: none;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 3rem;
+    padding-right: 3rem; 
+    animation-name: scroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.marquee-item img {
+    width: 160px;
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+@media (max-width: 768px) {
+    .marquee-item img {
+        width: 130px;
+    }
+    .marquee-content {
+        gap: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
