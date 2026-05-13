@@ -15,7 +15,7 @@
                         
                         <div class="mb-4">
                             <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: rgba(17, 102, 123, 0.1); color: #11667B; font-weight: 600;">
-                                <i class="bi bi-person-badge me-2"></i>Identitas Peserta Seminar
+                                Identitas Peserta Seminar
                             </span>
                             <h3 class="fw-bold mb-1" style="color: #11667B">{{ $practice->name }}</h3>
                             <p class="text-muted fs-5 mb-4">NIM: {{ $practice->nim }}</p>
@@ -23,7 +23,7 @@
 
                         <div class="mb-4 p-4 rounded-4" style="background-color: #f8f9fa; border: 2px solid #F59F1F;">
                             <label class="text-uppercase small fw-bold text-muted mb-2 d-block" style="letter-spacing: 1px;">Judul Laporan Kerja Praktek</label>
-                            <h5 class="fw-bold lh-base mb-0" style="color: #333;">"{{ $practice->title }}"</h5>
+                            <h5 class="fw-bold lh-base mb-0" style="color: #333;">{{ $practice->title }}</h5>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">
@@ -40,7 +40,7 @@
                     <div class="col-lg-5 text-white p-4 p-md-5 d-flex flex-column justify-content-between" style="background-color: #11667B;">
                         <div>
                             <span class="badge px-3 py-2 rounded-pill mb-4" style="background-color: rgba(255, 255, 255, 0.2); color: #fff;">
-                                <i class="bi bi-calendar-check me-2"></i>Waktu Pelaksanaan
+                                Waktu Pelaksanaan
                             </span>
 
                             <div class="mb-4">

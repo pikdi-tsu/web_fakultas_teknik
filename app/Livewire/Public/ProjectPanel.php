@@ -23,7 +23,7 @@ class ProjectPanel extends Component
         $results = Project::query()
             ->where('title', 'like', '%' . $this->search . '%')
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(12);
             
         return view('livewire.public.project-panel', ['projects' => $results]);
     }

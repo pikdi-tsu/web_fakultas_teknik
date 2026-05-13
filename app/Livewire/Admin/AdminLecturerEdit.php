@@ -53,7 +53,7 @@ class AdminLecturerEdit extends Component
             $manager = new ImageManager(new Driver());
             $img = $manager->read($this->picture->getRealPath());
             $img->scaleDown(width: 1200);
-            $encodedImage = $img->toWebp(quality: 75);
+            $encodedImage = $img->toWebp(quality: 85);
 
             Storage::disk('public')->put($path, $encodedImage->toString());
 

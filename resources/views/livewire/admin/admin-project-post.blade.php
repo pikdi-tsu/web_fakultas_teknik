@@ -1,7 +1,7 @@
 <div>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+    
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 
     <style>
@@ -28,12 +28,12 @@
             display: block !important;
             border-radius: 8px;
         }
-        
+
         trix-editor figcaption,
         trix-editor .attachment__caption {
             text-align: center !important;
-            margin: 5px auto 15px auto !important;
-            font-size: 0.9em !important; 
+            margin: 5px auto 15px auto !important; 
+            font-size: 0.9em !important;
             color: #6c757d !important;
             display: block !important;
         }
@@ -48,103 +48,36 @@
             background-color: #f8f9fa !important;
         }
     </style>
-    
+
     <div class="row justify-content-center">
         <div>
             <div class="card bg-white shadow rounded-4 overflow-hidden">
                 <div class="card-body p-4 p-lg-5">
                     
-                    <form id="form" action="/informations/{{ $information->id }}" method="POST" enctype="multipart/form-data">
+                    <form id="form" method="POST" action="/projects" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                 
                         <div class="mb-4">
-                            <label class="form-label fw-bold" style="color: #11667B;">Judul Informasi <span class="text-danger">*</span></label>
+                            <label class="form-label fw-bold" style="color: #11667B;">Judul Proyek <span class="text-danger">*</span></label>
                             <input type="text" 
                                    class="form-control bg-light border border-secondary-subtle shadow-none @error('title') is-invalid @enderror" 
                                    name="title" 
-                                   value="{{ old('title', $information->title) }}"
-                                   placeholder="Tuliskan judul informasi secara jelas..."
+                                   value="{{ old('title') }}"
+                                   placeholder="Tuliskan judul Project Based Learning..."
                                    style="border-radius: 10px;">
                             @error('title')
                                 <div class="invalid-feedback fw-semibold">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold" style="color: #11667B;">Kategori <span class="text-danger">*</span></label>
-                                <select wire:model.live="selectedLabel" 
-                                        class="form-select bg-light border border-secondary-subtle shadow-none @error('category_id') is-invalid @enderror" 
-                                        name="category_id" 
-                                        style="border-radius: 10px; cursor: pointer;">
-                                    <option value="" selected>-- Pilih Kategori --</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                    <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold" style="color: #11667B;">Target Role <span class="text-danger">*</span></label>
-                                <select wire:model.live="selectedOption" 
-                                        class="form-select bg-light border border-secondary-subtle shadow-none @error('role_id') is-invalid @enderror" 
-                                        name="role_id" 
-                                        id="statusSelect"
-                                        style="border-radius: 10px; cursor: pointer;">
-                                    <option value="" selected>-- Pilih Role --</option>
-                                    @foreach($roles as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('role_id')
-                                    <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-4 {{ $showOtherInputs ? '' : 'd-none' }}">
-                            <label class="form-label fw-bold" style="color: #11667B;">Penulis <span class="text-danger">*</span></label>
-                            <input type="text" 
-                                   class="form-control bg-light border border-secondary-subtle shadow-none @error('author') is-invalid @enderror" 
-                                   name="author" 
-                                   value="{{ old('author', $information->author) }}" 
-                                   wire:model.live="otherInput" 
-                                   id="spouseDetailsInput" 
-                                   {{ $showOtherInputs ? '' : 'disabled' }}
-                                   placeholder="Tuliskan nama penulis informasi..."
-                                   style="border-radius: 10px;">
-                            @error('author')
-                                <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                            @enderror
-                        </div>
-
                         <div class="mb-4">
                             <label class="form-label fw-bold" style="color: #11667B;">Gambar Cover / Thumbnail (Maks. 16MB) <span class="text-danger">*</span></label>
-                            
-                            @if($information->image)
-                                <div class="mb-3 p-3 bg-light border border-secondary-subtle rounded-4 d-flex align-items-center gap-3" style="max-width: 400px;">
-                                    <div class="overflow-hidden rounded shadow-sm border-2 border-white" style="width: 80px; height: 80px;">
-                                        <img src="{{ asset('storage/' . $information->image) }}" class="w-100 h-100 object-fit-cover" alt="Cover Saat Ini">
-                                    </div>
-                                    <div class="overflow-hidden">
-                                        <h6 class="fw-bold text-secondary mb-1">Cover Saat Ini</h6>
-                                        <p class="text-muted small mb-0 text-truncate">{{ basename($information->image) }}</p>
-                                    </div>
-                                </div>
-                            @else
-                                <p class="text-muted small mb-3"><i class="bi bi-info-circle me-1"></i> Belum ada gambar cover tersimpan.</p>
-                            @endif
-
                             <input type="file" 
                                    class="form-control bg-light border border-secondary-subtle shadow-none @error('image') is-invalid @enderror" 
                                    name="image" 
                                    accept="image/*"
                                    style="border-radius: 10px;">
-                            <div class="form-text text-muted small mt-2"><i class="bi bi-info-circle me-1"></i> Kosongkan jika tidak ingin mengubah cover. Disarankan menggunakan gambar dengan resolusi baik.</div>
+                            <div class="form-text text-muted small mt-2"><i class="bi bi-info-circle me-1"></i> Disarankan menggunakan gambar dengan resolusi baik.</div>
                             @error('image')
                                 <div class="invalid-feedback fw-semibold d-block">{{ $message }}</div>
                             @enderror
@@ -161,7 +94,7 @@
                                     id="tanggal" 
                                     class="form-control bg-light border border-secondary-subtle shadow-none" 
                                     name="created_at" 
-                                    value="{{ old('created_at', $information->created_at) }}"
+                                    value=""
                                     placeholder="Pilih Tanggal & Jam"
                                     style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; cursor: pointer; background-color: #f8f9fa !important;">
                             </div>
@@ -171,7 +104,7 @@
                             @enderror
 
                             <div class="form-text text-muted small mt-2">
-                                <i class="bi bi-info-circle me-1"></i> Biarkan jika tidak ingin mengubah tanggal posting informasi ini.
+                                <i class="bi bi-info-circle me-1"></i> Kosongkan bila tidak dikustomisasi (Sistem akan otomatis menggunakan waktu saat ini).
                             </div>
                         </div>
 
@@ -180,7 +113,7 @@
                                 Isi / Deskripsi Informasi
                                 <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-2 py-1" style="font-size: 0.75rem;">Rich Text</span>
                             </label>
-                            <input id="description-trix" type="hidden" name="description" value="{{ old('description', $information->description) }}">
+                            <input id="description-trix" type="hidden" name="description" value="">
                             <trix-editor input="description-trix" 
                                          class="trix-content bg-light border-secondary-subtle shadow-none @error('description') border-danger @enderror" 
                                          style="border-radius: 10px; min-height: 300px; padding: 15px;"></trix-editor>
@@ -194,7 +127,7 @@
                                 Batal
                             </a>
                             <button id="btn" type="submit" class="btn btn-primary fw-bold px-5 rounded-pill shadow-sm" style="background-color: #11667B; border-color: #11667B;">
-                                <span id="text"><i class="bi bi-save me-2"></i> Simpan Perubahan</span>
+                                <span id="text"><i class="bi bi-save me-2"></i> Simpan Data</span>
                                 <span id="spinner" class="d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -207,7 +140,6 @@
     </div>
 
     <script src="{{ asset('js/spinner.js') }}"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
     
@@ -223,7 +155,6 @@
             });
         });
     </script>
-
     <script>
         document.addEventListener("trix-attachment-add", function(event) {
             if (event.attachment.file) {
@@ -251,7 +182,7 @@
                     alert('Gagal mengunggah gambar sisipan.');
                 }, (livewireEvent) => {
                     let networkProgress = livewireEvent.detail.progress;
-                    let displayProgress = Math.floor(networkProgress * 0.95);
+                    let displayProgress = Math.floor(networkProgress * 0.9);
                     
                     attachment.setUploadProgress(displayProgress);
                 });

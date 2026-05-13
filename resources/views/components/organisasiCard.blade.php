@@ -6,7 +6,7 @@
                 {{ $title }}<br>
                 <a href="{{ $link }}" target="_blank" class=" fw-bold fs-6" style="color: #F59F1F"><i class="bi bi-instagram"></i> {{ $name }}</a>
             </p>
-            <div class="w-100 mb-2" style="background-color: #F59F1F; height: 5px"></div>
+            <div class="mx-auto mb-3" style="background: linear-gradient(90deg, transparent, #F59F1F, transparent); height: 3px; width: 65%; border-radius: 2px;"></div>
             <div class="d-flex justify-content-center align-items-center" style="min-height: 150px">
                 <p class="card-text text-start mx-3 pb-3 text-white opacity-75">{{ Str::substr($description, 0, 200) }}<span class=" fst-italic opacity-50"></span></p>
             </div>
