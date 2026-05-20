@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AdminUserController extends Controller
@@ -16,7 +18,8 @@ class AdminUserController extends Controller
 
     public function indexPassword()
     {
-        $user = User::where('id', '1')->first();
+        $au = Auth::user();
+        $user = User::where('id', $au->id)->first();
         return view('admin.adminUserPassword', ['user' => $user]);
     }
     public function updatePassword(Request $request, User $user): RedirectResponse
@@ -25,15 +28,16 @@ class AdminUserController extends Controller
             'current_password' => ['required', 'current_password'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
-    
-        $user->update($validated); 
+
+        $user->update($validated);
 
         return redirect('/adminPengaturan')->with('success', 'User Berhasil Di-update!');
     }
 
     public function indexEmail()
     {
-        $user = User::where('id', '1')->first();
+        $au = Auth::user();
+        $user = User::where('id', $au->id)->first();
         return view('admin.adminUserEmail', ['user' => $user]);
     }
     public function updateEmail(Request $request, User $user): RedirectResponse
@@ -42,8 +46,8 @@ class AdminUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'current_password' => ['required', 'current_password']
         ]);
-    
-        $user->update($validated); 
+
+        $user->update($validated);
 
         return redirect('/adminPengaturan')->with('success', 'User Berhasil Di-update!');
     }
