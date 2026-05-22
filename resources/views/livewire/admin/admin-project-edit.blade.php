@@ -54,70 +54,19 @@
             <div class="card bg-white shadow rounded-4 overflow-hidden">
                 <div class="card-body p-4 p-lg-5">
                     
-                    <form id="form" action="/informations/{{ $information->id }}" method="POST" enctype="multipart/form-data">
+                    <form id="form" action="/projects/{{ $project->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                 
                         <div class="mb-4">
-                            <label class="form-label fw-bold" style="color: #11667B;">Judul Informasi <span class="text-danger">*</span></label>
+                            <label class="form-label fw-bold" style="color: #11667B;">Judul Proyek <span class="text-danger">*</span></label>
                             <input type="text" 
                                    class="form-control bg-light border border-secondary-subtle shadow-none @error('title') is-invalid @enderror" 
                                    name="title" 
-                                   value="{{ old('title', $information->title) }}"
-                                   placeholder="Tuliskan judul informasi secara jelas..."
+                                   value="{{ old('title', $project->title) }}"
+                                   placeholder="Tuliskan judul Project Based Learning..."
                                    style="border-radius: 10px;">
                             @error('title')
-                                <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold" style="color: #11667B;">Kategori <span class="text-danger">*</span></label>
-                                <select wire:model.live="selectedLabel" 
-                                        class="form-select bg-light border border-secondary-subtle shadow-none @error('category_id') is-invalid @enderror" 
-                                        name="category_id" 
-                                        style="border-radius: 10px; cursor: pointer;">
-                                    <option value="" selected>-- Pilih Kategori --</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                    <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold" style="color: #11667B;">Target Role <span class="text-danger">*</span></label>
-                                <select wire:model.live="selectedOption" 
-                                        class="form-select bg-light border border-secondary-subtle shadow-none @error('role_id') is-invalid @enderror" 
-                                        name="role_id" 
-                                        id="statusSelect"
-                                        style="border-radius: 10px; cursor: pointer;">
-                                    <option value="" selected>-- Pilih Role --</option>
-                                    @foreach($roles as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('role_id')
-                                    <div class="invalid-feedback fw-semibold">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-4 {{ $showOtherInputs ? '' : 'd-none' }}">
-                            <label class="form-label fw-bold" style="color: #11667B;">Penulis <span class="text-danger">*</span></label>
-                            <input type="text" 
-                                   class="form-control bg-light border border-secondary-subtle shadow-none @error('author') is-invalid @enderror" 
-                                   name="author" 
-                                   value="{{ old('author', $information->author) }}" 
-                                   wire:model.live="otherInput" 
-                                   id="spouseDetailsInput" 
-                                   {{ $showOtherInputs ? '' : 'disabled' }}
-                                   placeholder="Tuliskan nama penulis informasi..."
-                                   style="border-radius: 10px;">
-                            @error('author')
                                 <div class="invalid-feedback fw-semibold">{{ $message }}</div>
                             @enderror
                         </div>
@@ -125,14 +74,14 @@
                         <div class="mb-4">
                             <label class="form-label fw-bold" style="color: #11667B;">Gambar Cover / Thumbnail (Maks. 16MB) <span class="text-danger">*</span></label>
                             
-                            @if($information->image)
+                            @if($project->image)
                                 <div class="mb-3 p-3 bg-light border border-secondary-subtle rounded-4 d-flex align-items-center gap-3" style="max-width: 400px;">
                                     <div class="overflow-hidden rounded shadow-sm border-2 border-white" style="width: 80px; height: 80px;">
-                                        <img src="{{ asset('storage/' . $information->image) }}" class="w-100 h-100 object-fit-cover" alt="Cover Saat Ini">
+                                        <img src="{{ asset('storage/' . $project->image) }}" class="w-100 h-100 object-fit-cover" alt="Cover Saat Ini">
                                     </div>
                                     <div class="overflow-hidden">
                                         <h6 class="fw-bold text-secondary mb-1">Cover Saat Ini</h6>
-                                        <p class="text-muted small mb-0 text-truncate">{{ basename($information->image) }}</p>
+                                        <p class="text-muted small mb-0 text-truncate">{{ basename($project->image) }}</p>
                                     </div>
                                 </div>
                             @else
@@ -161,7 +110,7 @@
                                     id="tanggal" 
                                     class="form-control bg-light border border-secondary-subtle shadow-none" 
                                     name="created_at" 
-                                    value="{{ old('created_at', $information->created_at) }}"
+                                    value="{{ old('created_at', $project->created_at) }}"
                                     placeholder="Pilih Tanggal & Jam"
                                     style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; cursor: pointer; background-color: #f8f9fa !important;">
                             </div>
@@ -180,7 +129,7 @@
                                 Isi / Deskripsi Informasi
                                 <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-2 py-1" style="font-size: 0.75rem;">Rich Text</span>
                             </label>
-                            <input id="description-trix" type="hidden" name="description" value="{{ old('description', $information->description) }}">
+                            <input id="description-trix" type="hidden" name="description" value="{{ old('description', $project->description) }}">
                             <trix-editor input="description-trix" 
                                          class="trix-content bg-light border-secondary-subtle shadow-none @error('description') border-danger @enderror" 
                                          style="border-radius: 10px; min-height: 300px; padding: 15px;"></trix-editor>

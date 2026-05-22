@@ -1,3 +1,9 @@
+<style>
+    #subMenu:hover{
+        background-color: #f0f0f0;
+    }
+</style>
+
 <nav style="background-color: #11667B; height: 25px">
     <div class="container">
         <div class="d-flex">
@@ -25,67 +31,67 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link px-1 dropdown-toggle {{ (Route::is('profil')) ? 'active' : '' }}" data-bs-toggle="dropdown" style="color: #11667B" href="#" role="button" aria-expanded="false">Profil</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" style="color: #11667B" href="/tentang-kami">Tentang Kami</a></li>
-                        <li><a class="dropdown-item" style="color: #11667B" href="/daftar-dosen">Daftar Dosen</a></li>
+                        <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/tentang-kami">Tentang Kami</a></li>
+                        <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/daftar-dosen">Daftar Dosen</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link px-1 dropdown-toggle {{ (Route::is('program-studi')) ? 'active' : '' }}" data-bs-toggle="dropdown" style="color: #11667B" href="#" role="button" aria-expanded="false">Program Studi</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/studiInformatika">Informatika</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/studiSistemInformasi">Sistem Informasi</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/studiRekayasaKomputer">Rekayasa Komputer</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/studiInformatika">Informatika</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/studiSistemInformasi">Sistem Informasi</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/studiRekayasaKomputer">Rekayasa Komputer</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link px-1 dropdown-toggle {{ (Route::is('kemahasiswaan')) ? 'active' : '' }}" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="color: #11667B" href="#" role="button" aria-expanded="false">Kemahasiswaan</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" style="color: #11667B" href="/kemahasiswaanO&UKM">Organisasi & UKM</a></li>
-                        <li><a class="dropdown-item" style="color: #11667B" href="/kemahasiswaanLM">Layanan Mahasiswa</a></li>
+                        <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/kemahasiswaanO&UKM">Organisasi & UKM</a></li>
+                        <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/kemahasiswaanLM">Layanan Mahasiswa</a></li>
                         <li class=" d-none d-lg-block">
                             <div class="btn-group dropend dropdown-item">
-                                <a class="dropdown-toggle fw-normal text-decoration-none w-100" style="color: #11667B" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a id="subMenu" class="dropdown-toggle fw-normal text-decoration-none w-100" style="color: #11667B" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                     Jadwal Sidang/Seminar
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" style="color: #11667B" href="/jadwalSidang">Sidang Skripsi</a></li>
-                                    <li><a class="dropdown-item" style="color: #11667B" href="/jadwalSeminar">Seminar Kerja Praktek</a></li>
+                                    <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/jadwalSidang">Sidang Skripsi</a></li>
+                                    <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/jadwalSeminar">Seminar Kerja Praktek</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class=" d-block d-lg-none">
                             <div class="dropdown">
-                                <a class="dropdown-toggle fw-normal text-decoration-none dropdown-item" style="color: #11667B" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a id="subMenu" class="dropdown-toggle fw-normal text-decoration-none dropdown-item" style="color: #11667B" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                     Jadwal Sidang/Seminar
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" style="color: #11667B" href="/jadwalSidang">Sidang Skripsi</a></li>
-                                    <li><a class="dropdown-item" style="color: #11667B" href="/jadwalSeminar">Seminar Kerja Praktek</a></li>
+                                    <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/jadwalSidang">Sidang Skripsi</a></li>
+                                    <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="/jadwalSeminar">Seminar Kerja Praktek</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="dropdown-item" style="color: #11667B" href="https://sinus.siakadcloud.com" target="_blank">Sistem Informasi Akademik</a></li>
+                        <li><a id="subMenu" class="dropdown-item" style="color: #11667B" href="https://sinus.siakadcloud.com" target="_blank">Sistem Informasi Akademik</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link px-1 dropdown-toggle {{ (Route::is('pusat-informasi')) ? 'active' : '' }}" data-bs-toggle="dropdown" style="color: #11667B" href="#" role="button" aria-expanded="false">Pusat Informasi</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/pusat-informasi">Informasi Terkini</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/dokumen">Dokumen</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/pusat-informasi">Informasi Terkini</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/dokumen">Dokumen</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link px-1 dropdown-toggle {{ (Route::is('riset&pengabdian')) ? 'active' : '' }}" data-bs-toggle="dropdown" style="color: #11667B" href="#" role="button" aria-expanded="false">Riset & Pengabdian</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/risetDosen">Riset</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/pengabdianDosen">Pengabdian</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/tugasAkhirMhs">Tugas Akhir Mahasiswa</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/publikasiMhs">Publikasi Mahasiswa</a></li>
-                        <li><a class="dropdown-item"  style="color: #11667B" href="/projectBasedLearning">Project Based Learning</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/risetDosen">Riset</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/pengabdianDosen">Pengabdian</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/tugasAkhirMhs">Tugas Akhir Mahasiswa</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/publikasiMhs">Publikasi Mahasiswa</a></li>
+                        <li><a id="subMenu" class="dropdown-item"  style="color: #11667B" href="/projectBasedLearning">Project Based Learning</a></li>
                     </ul>
                 </li>
 

@@ -10,5 +10,4 @@
     </x-layouts.navbarAdmin>
     
 </div>
-
 @endsection

@@ -49,7 +49,7 @@ class AdminPartnerController extends Controller
 
         $image->scaleDown(width: 1200);
 
-        $encodedImage = $image->toWebp(quality: 75);
+        $encodedImage = $image->toWebp(quality: 85);
 
         Storage::disk('public')->put($path, $encodedImage->toString());
 
@@ -96,7 +96,7 @@ class AdminPartnerController extends Controller
 
             $image->scaleDown(width: 1200);
 
-            $encodedImage = $image->toWebp(quality: 75);
+            $encodedImage = $image->toWebp(quality: 85);
 
             Storage::disk('public')->put($path, $encodedImage->toString());
     

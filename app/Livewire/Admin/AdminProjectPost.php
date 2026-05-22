@@ -2,8 +2,6 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Category;
-use App\Models\Role;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,23 +9,11 @@ use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-class AdminInformationPost extends Component
+class AdminProjectPost extends Component
 {
     use WithFileUploads; 
 
-    public $selectedOption = '';
-    public $showOtherInputs = false;
-    public $otherInput = '';
-    
-    public $trixTempImage; 
-
-    public function updatedSelectedOption($value)
-    {
-        $this->showOtherInputs = in_array($value, ['2', '3']);
-        if ($value != '') {
-            $this->otherInput = '';
-        }
-    }
+    public $trixTempImage;
 
     public function uploadTrixImage()
     {
@@ -43,7 +29,7 @@ class AdminInformationPost extends Component
         $image = $manager->read($this->trixTempImage->getRealPath());
 
         $image->scaleDown(width: 1200);
-        $encodedImage = $image->toWebp(quality: 85);
+        $encodedImage = $image->toWebp(quality: 75);
 
         Storage::disk('public')->put($path, $encodedImage->toString());
 
@@ -55,8 +41,6 @@ class AdminInformationPost extends Component
 
     public function render()
     {
-        $categories = Category::all();
-        $roles = Role::all();
-        return view('livewire.admin.admin-information-post', ['categories' => $categories, 'roles' => $roles]);
+        return view('livewire.admin.admin-project-post');
     }
 }

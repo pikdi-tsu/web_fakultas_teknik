@@ -69,7 +69,7 @@ class AdminInformationController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file->getRealPath());
             $image->scaleDown(width: 1200);
-            $encodedImage = $image->toWebp(quality: 75);
+            $encodedImage = $image->toWebp(quality: 85);
 
             Storage::disk('public')->put($path, $encodedImage->toString());
 
@@ -165,7 +165,7 @@ class AdminInformationController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file->getRealPath());
             $image->scaleDown(width: 1200);
-            $encodedImage = $image->toWebp(quality: 75);
+            $encodedImage = $image->toWebp(quality: 85);
 
             Storage::disk('public')->put($path, $encodedImage->toString());
 

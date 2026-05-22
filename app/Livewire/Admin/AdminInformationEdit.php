@@ -65,7 +65,7 @@ class AdminInformationEdit extends Component
         $image = $manager->read($this->trixTempImage->getRealPath());
         
         $image->scaleDown(width: 1200);
-        $encodedImage = $image->toWebp(quality: 75);
+        $encodedImage = $image->toWebp(quality: 85);
 
         Storage::disk('public')->put($path, $encodedImage->toString());
 

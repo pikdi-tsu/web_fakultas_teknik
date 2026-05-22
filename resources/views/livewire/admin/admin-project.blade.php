@@ -25,8 +25,7 @@
                     <thead class="table-light">
                         <tr>
                             <th class="text-center text-muted" style="width: 5%;">No.</th>
-                            <th class="text-muted" style="width: 45%;">Judul Proyek</th>
-                            <th class="text-muted text-center" style="width: 25%;">Link</th>
+                            <th class="text-muted">Judul Proyek</th>
                             <th class="text-center text-muted" style="width: 15%;"></th>
                         </tr>
                     </thead>
@@ -38,13 +37,6 @@
                                 </td>
                                 <td>
                                     <span class="fw-bold text-dark">{{ $project->title }}</span>
-                                </td>
-                                <td class=" text-center">
-                                    <span class="fw-bold text-dark">{{ $project->link ? '' : '-' }}</span>
-                                    <a href="{{ $project->link }}" target="_blank" class="{{ $project->link ?? 'd-none' }} btn rounded-pill px-3 fw-semibold text-center shadow-sm d-inline-flex align-items-center gap-1 text-nowrap" style="background-color: rgba(17, 102, 123, 0.1); color: #11667B;">
-                                        <i class="bi bi-link-45deg"></i>
-                                        <span>{{ Str::substr($project->link, 0, 15) }}...</span>
-                                    </a>
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
